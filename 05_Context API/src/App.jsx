@@ -1,17 +1,22 @@
-import { createContext, useState } from "react";
-import "./App.css";
+import './App.css'
+import LoginForm from './components/Login'
+import Chatbot from './components/Chatbot'
+import { useContext } from 'react';
+import { UserProvider } from './context/UserContext';
 
-export const AuthContext = createContext();
 function App() {
-  const [userName, setUserName] = useState("Zeeshan");
 
+  const { userInfo } = useContext(UserProvider)
+  console.log(userInfo)
+
+  if (!userInfo) {
+    return (<LoginForm />)
+  }
   return (
     <>
-      <AuthContext.Provider value={{ userName, setUserName }}>
-        <Parent />
-      </AuthContext.Provider>
+      <Chatbot />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
