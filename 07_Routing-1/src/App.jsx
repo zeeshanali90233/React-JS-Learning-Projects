@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import { NavLink } from "react-router";
+import MyNavbar from "./components/Navbar";
+import MyCard from "./components/Cards";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +17,19 @@ function App() {
 
   return (
     <>
+      <MyNavbar />
+      <MyCard title={"Zeshan Ali"} description={"AI/Cloud Engineer"}/>
+      <nav>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/contactus" end>
+          Contact Us
+        </NavLink>
+        <NavLink to="/about" end>
+          About
+        </NavLink>
+      </nav>
       <button onClick={Increment}>Increment</button>
       <span>{count}</span>
       <button onClick={Decrement}>Decrement</button>
